@@ -39,7 +39,7 @@ public class FormatGEDCOM {
 
         String filedata = "";
         String filePath;
-        filePath = "F:\\Stevens_Masters\\Fall 18\\Agile\\Week 4\\Deepu_Variyangattil.ged";
+        filePath = "C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint1\\src\\Deepu_Variyangattil.ged";
         CharSequence charSequenceIndividual = "INDI";
         CharSequence charSequenceFamily = "FAM";
         //CharSequence charSequenceChild = "FAMC";
@@ -298,7 +298,7 @@ public class FormatGEDCOM {
             e.printStackTrace();
         }
 
-        printTable(individualMap,FamilyMap);
+        //printTable();
 
     }
 
@@ -314,7 +314,7 @@ public class FormatGEDCOM {
         return formattedDate;
 
     }
-    public void printTable(HashMap<String,String[]> individualMap,HashMap<String,String[]> FamilyMap )
+    public void printTable( )
     {
         String[] temp = new String[100];
         String[] set = new String[1000];

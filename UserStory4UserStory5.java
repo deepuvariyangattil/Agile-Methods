@@ -7,6 +7,7 @@ public class UserStory4UserStory5 {
 
     public UserStory4UserStory5() {
         formatGEDCOM.GedcomTable();
+        formatGEDCOM.printTable();
 
     }
 
