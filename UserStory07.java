@@ -31,7 +31,7 @@ public class UserStory07 {
                     differenceInYears = differenceInDays / 365;
 
                     if (differenceInYears > 150) {
-                        System.out.println("\n ERROR in the Input GEDCOM File: The age is more than 150 for the Individual ID " + s);
+                        System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
                     }
                 }
                 else if(indiValues[5].equalsIgnoreCase("NA")){
@@ -41,7 +41,7 @@ public class UserStory07 {
                     differenceInYears = differenceInDays/365;
 
                     if(differenceInYears > 150){
-                        System.out.println("\n ERROR in the Input GEDCOM File: The age is more than 150 for the Individual ID " + s);
+                        System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
                     }
                 }
 
