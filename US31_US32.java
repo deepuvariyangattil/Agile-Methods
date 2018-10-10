@@ -1,5 +1,4 @@
 import java.text.ParseException;
-import java.util.Date;
 import java.util.HashMap;
 
 public class US31_US32{
@@ -23,7 +22,7 @@ public void StillSingle_US31() throws ParseException
         	   int age;
             age=Integer.parseInt(indiValues[3]);
         	   if(age>30)
-        	   {System.out.println("The person living and single is "+indiValues[0]+"with id as "+s);}
+        	   {System.out.println("User Story 31_The person living and single is "+indiValues[0]+"with id as "+s);}
         	   
             }
         }
@@ -59,7 +58,7 @@ public void MultipleBirths_US32() throws ParseException
 
     		if(indiValues1[2].equals(indiValues[2])&&indiValues1[6].equals(indiValues[6])&&!(indiValues1[0].equals(indiValues[0])))
     			
-    		{System.out.println(indiValues[0]+" and "+indiValues1[0]+" are a multiple birth");}
+    		{System.out.println("User Story32_"+indiValues[0]+" and "+indiValues1[0]+" are a multiple birth");}
     		
     		
     		
