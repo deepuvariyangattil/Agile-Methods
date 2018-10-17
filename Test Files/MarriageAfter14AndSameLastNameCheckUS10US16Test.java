@@ -5,12 +5,12 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
-public class Marriageafter14andSamelastnamecheckUS10US14Test {
-    Marriageafter14andSamelastnamecheck_US10US14 obj=new Marriageafter14andSamelastnamecheck_US10US14();
+public class MarriageAfter14AndSameLastNameCheckUS10US16Test {
+    MarriageAfter14AndSameLastNameCheck_US10US16 obj=new MarriageAfter14AndSameLastNameCheck_US10US16();
 
     @Test
     public void lastNameExtractor() {
-        Marriageafter14andSamelastnamecheck_US10US14 us=new Marriageafter14andSamelastnamecheck_US10US14();
+        MarriageAfter14AndSameLastNameCheck_US10US16 us=new MarriageAfter14AndSameLastNameCheck_US10US16();
         String name="Shinto/Francis/";
         String lN="Francis";
         assertEquals(lN,us.LastNameExtractor(name));
@@ -50,7 +50,7 @@ public class Marriageafter14andSamelastnamecheckUS10US14Test {
         String[] indivalue={" George/Joe/","M","02-05-2018","33","True","NA","F2","F1"};
         String[] indivalue2={"Sarah/Thomas/","F","02-05-2018","33","True","NA","F2","F1"};
         //Creating a positive scenario where last names are same. Hence shouldn't print any error message.
-        Family.put("F6",familyValue);
+        Family.put("F7",familyValue);
         Individual.put("I14",indivalue);
         boolean output=obj.MaleLastNamesSameInFamily_US16(Family,Individual);
         Assert.assertFalse(output);
@@ -64,5 +64,12 @@ public class Marriageafter14andSamelastnamecheckUS10US14Test {
         Assert.assertTrue(output);
 
     }
+    @Test
+    public void LastNameExtractor()
+    {
+        String output=new MarriageAfter14AndSameLastNameCheck_US10US16().LastNameExtractor("Deepu/Variyangattil/");
+        Assert.assertEquals("Variyangattil",output);
+    }
+
 
 }
