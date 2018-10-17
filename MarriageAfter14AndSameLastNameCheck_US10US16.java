@@ -3,19 +3,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-public class Marriageafter14andSamelastnamecheck_US10US14 {
+public class MarriageAfter14AndSameLastNameCheck_US10US16 {
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 
-    public Marriageafter14andSamelastnamecheck_US10US14() {
-       // formatGEDCOM.GedcomTable();
+    public MarriageAfter14AndSameLastNameCheck_US10US16() {
+
 
     }
 
     public boolean MarriageAfterFourteen_US10(HashMap<String,String[]>Family,HashMap<String,String[]> Individual)
-{   //HashMap<String,String[]> Family=formatGEDCOM.getFamilyMap();
-    //HashMap<String,String[]> Individual=formatGEDCOM.getIndividualMap();
-    String fValues[]=new String[100];
+{   String fValues[]=new String[100];
     String iValues[]=new String[100];
+    ErrorMessages errorMessages=new ErrorMessages();
     Date marriedDate,birthDate;
     long differenceInDays,duration,differenceInYears;
     Boolean output=false;
@@ -45,18 +44,22 @@ public class Marriageafter14andSamelastnamecheck_US10US14 {
                 {
                     if(iValues[1].trim().equalsIgnoreCase("M"))
                     {
-                        System.out.println("\nError in GEDCOM File: Husband with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                               s );
+                        //System.out.println("\nError in GEDCOM File: Husband with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
+                          //     s );
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband married before 14 years old",t,s,"UserStory10");
+
                     }
                     else if(iValues[1].trim().equalsIgnoreCase("F"))
                     {
-                        System.out.println("\nError in GEDCOM File: Wife with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                                s);
+                        //System.out.println("\nError in GEDCOM File: Wife with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
+                          //      s);
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Wife married before 14 years old",t,s,"UserStory10");
                     }
                     else
                     {
-                        System.out.println("\nError in GEDCOM File: Husband/Wife(Gender not mentioned) with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                                s);
+                        //System.out.println("\nError in GEDCOM File: Husband/Wife(Gender not mentioned) with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
+                          //      s);
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband/Wife(Gender not mentioned) married before 14 years old",t,s,"UserStory10");
                     }
                    output=true;
                 }
@@ -71,8 +74,7 @@ return output;
 }
 public boolean MaleLastNamesSameInFamily_US16(HashMap<String,String[]> Family,HashMap<String,String[]> Individual)
 {
-    //HashMap<String,String[]> Family=formatGEDCOM.getFamilyMap();
-    //HashMap<String,String[]> Individual=formatGEDCOM.getIndividualMap();
+ErrorMessages errorMessages=new ErrorMessages();
     String fValues[]=new String[100];
     String iValues[]=new String[100];
     String child[]=new String[100];
@@ -95,8 +97,9 @@ public boolean MaleLastNamesSameInFamily_US16(HashMap<String,String[]> Family,Ha
                         childLastName=LastNameExtractor(iValues[0]);
                         if(!(childLastName.trim().equalsIgnoreCase(fatherLastName)))
                         {
-                            System.out.println("\nError in GEDCOM File: Child with Individual ID "+t+" Has a different last name compared to Father with individual ID "+fValues[2]
-                            +" in the family with family ID "+s);
+                            //System.out.println("\nError in GEDCOM File: Child with Individual ID "+t+" Has a different last name compared to Father with individual ID "+fValues[2]
+                            //+" in the family with family ID "+s);
+                            errorMessages.FamilyTableErrorMessages("Child and Father has different last names ",s,"UserStory16");
                             result=true;
                         }
 
@@ -104,7 +107,7 @@ public boolean MaleLastNamesSameInFamily_US16(HashMap<String,String[]> Family,Ha
                 }
                 catch(Exception e)
                 {
-                    System.out.println("Error in GEDCOM File: Child record is missing in Individual table\n");
+                    System.out.println("Error in GEDCOM File_UserStory16: Child record is missing in Individual table\n");
                     continue;
                 }
             }
