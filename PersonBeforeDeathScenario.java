@@ -1,4 +1,4 @@
-package com.formatgedcom;
+
 
 import java.text.ParseException;
 import java.util.Date;
@@ -17,19 +17,18 @@ public class PersonBeforeDeathScenario {
 	}
 	
 	//ID,NAME,GENDER,BIRTHDAY,AGE,ALIVE,DEATH,CHILD,SPOUSE
-	public boolean checkBirthBeforeDeath(HashMap<String, String[]> Indi , HashMap<String, String[]> familyMap) throws ParseException{
+	public boolean checkBirthBeforeDeath(HashMap<String, String[]> Indi ) throws ParseException{
 		boolean result = false;
 		String [] indiValues = new String[100];
 		Date birthDate,deathDate;
 		for (String s : Indi.keySet()) {
 			indiValues = Indi.get(s);
 			try {
-				if (!(indiValues[3].equalsIgnoreCase("NA"))) {
-					birthDate = formatGEDCOM.StringtoDate(indiValues[3]); //check if birthdate is coming.
-					deathDate = formatGEDCOM.StringtoDate(indiValues[6]); // check if death date is coming
-
+				if (!(indiValues[2].equalsIgnoreCase("NA"))&&!(indiValues[5].equalsIgnoreCase("NA"))) {
+					birthDate = formatGEDCOM.StringtoDate(indiValues[2]);
+					deathDate = formatGEDCOM.StringtoDate(indiValues[5]); // check if death date is coming
 					if (birthDate.after(deathDate)) {
-						return error.IndividualTableErrorMessages("birthdate is after death Date",indiValues[0] , "US03" );
+						return error.IndividualTableErrorMessages("birthdate is after death Date", s, "US03");
 					}
 				}
 
