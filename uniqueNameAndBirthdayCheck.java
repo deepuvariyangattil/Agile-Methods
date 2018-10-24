@@ -1,3 +1,4 @@
+package com.VedantSoni;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -7,9 +8,11 @@ public class uniqueNameAndBirthdayCheck {
 
     public uniqueNameAndBirthdayCheck(){}
 
-    public boolean uniqueNameandBirthday_US23( HashMap<String, String[]> individual) throws ParseException {
+    public boolean uniqueNameandBirthday_US23(HashMap<String, String[]>individual, HashMap<String, String[]>individual1) throws ParseException {
         formatGEDCOM.GedcomTable();
         HashMap<String, String[]> Individual = formatGEDCOM.getIndividualMap();
+        ErrorMessages em = new ErrorMessages();
+
         String[] indiValues = new String[100];
         String[] indiValues1 = new String[100];
         Boolean output=false;
@@ -22,25 +25,26 @@ public class uniqueNameAndBirthdayCheck {
 
                 for (int i = 0; i < indiValues.length; i++) {
 
-                    for (int j = i+1; j < indiValues1.length; j++) {
+                    for (int j = i + 1; j < indiValues1.length; j++) {
 
-                        if (indiValues[0].equals(indiValues1[0])&& indiValues[i].equals(indiValues1[j])){
+                           for (int k = 0; k < indiValues.length; k++) {
 
-                            System.out.println("ERROR in Gedcom File " + indiValues[0] + " and " + indiValues1[0] + " have duplicate names");
+                                for (int l = k + 1; l < indiValues1.length; l++) {
+
+                                    if (indiValues[0].equals(indiValues1[0]) && indiValues[i].equals(indiValues1[j])){
+
+                                    if (indiValues[2].equals(indiValues1[2]) && indiValues[k].equals(indiValues1[l])) {
+
+                                        em.IndividualTableErrorMessages("Name and birthdate are the same",s,"US23");
+
+                                    }output = true;
+
+
+                                }
+
+
+                            }
                         }
-
-                    }
-
-
-                }
-                for (int i = 0; i < indiValues.length; i++) {
-
-                    for (int j = i+1; j < indiValues1.length; j++) {
-
-                        if (indiValues[2].equals(indiValues1[2])&& indiValues[i].equals(indiValues1[j])){
-
-                            System.out.println("ERROR in Gedcom File: Individual " + indiValues[0] + " has Duplicate Birthdate " + indiValues[2] + " and " + indiValues1[2] );
-                        }output = true;
 
                     }
 
@@ -51,4 +55,3 @@ public class uniqueNameAndBirthdayCheck {
         }return output;
     }
 }
-
