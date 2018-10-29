@@ -39,7 +39,7 @@ public class FormatGEDCOM {
 
         String filedata = "";
         String filePath;
-        filePath = "C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint1\\src\\Deepu_Variyangattil.ged";
+        filePath = "C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint3\\src\\Deepu_Variyangattil.ged";
         CharSequence charSequenceIndividual = "INDI";
         CharSequence charSequenceFamily = "FAM";
         //CharSequence charSequenceChild = "FAMC";
