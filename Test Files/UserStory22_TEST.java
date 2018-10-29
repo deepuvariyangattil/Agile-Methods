@@ -1,9 +1,10 @@
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class UserStory22_TEST {
 
-    UniqueIDCheck_US22 obj = new UniqueIDCheck_US22();
+    uniqueIndividualAndFamilyIDCheck obj = new uniqueIndividualAndFamilyIDCheck();
 
 
     @Test
@@ -11,19 +12,16 @@ public class UserStory22_TEST {
 
 
 
-            Boolean b = obj.uniqueIDCheck("C:\\Users\\Vedant Soni\\Desktop\\Gedcom Files\\Vedant.ged");
-            Assert.assertTrue(b);
+            Boolean b = obj.uniqueIDCheck("C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint2\\Test\\Vedant.ged");
+            Assert.assertFalse(b);
 
 
-            Boolean c = obj.uniqueIDCheck("C:\\Users\\Vedant Soni\\Desktop\\Gedcom Files\\Vedant(with error).ged");
+            Boolean c = obj.uniqueIDCheck("C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint2\\Test\\Vedant(with error).ged");
             Assert.assertTrue(c);
 
 
 
     }
 }
-
-
-
 
 
