@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.Vector;
 
 public class ErrorMessagesTest {
 
@@ -20,6 +20,16 @@ public class ErrorMessagesTest {
     @Test
     public void familyAndIndividualTableErrorMessages() {
         boolean b=new ErrorMessages().FamilyAndIndividualTableErrorMessages("Data to be corrected","I5","F7","UserStory24");
+        Assert.assertTrue(b);
+    }
+
+    @Test
+    public void listPrint() {
+        Vector<String>list=new Vector<>(100);
+        list.add("Hello");
+        list.add("World");
+
+        boolean b=new ErrorMessages().ListPrint("Data to be printed",list,"UserStoryXX");
         Assert.assertTrue(b);
     }
 }
