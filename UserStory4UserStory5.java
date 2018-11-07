@@ -7,6 +7,7 @@ public class UserStory4UserStory5 {
 
     public UserStory4UserStory5() {
         formatGEDCOM.GedcomTable();
+        formatGEDCOM.printTable();
 
     }
 
@@ -26,16 +27,16 @@ public class UserStory4UserStory5 {
                         marriedDate = formatGEDCOM.StringtoDate(familyValues[0]);
                         divorceDate = formatGEDCOM.StringtoDate(familyValues[1]);
                         if (marriedDate.after(divorceDate) || marriedDate.equals(divorceDate)) {
-                            System.out.println("\nError in GEDCOM File:Marriage Date is after Divorce date " +
+                            System.out.println("\nError in GEDCOM File_User Story04 :Marriage Date is after Divorce date " +
                                     " for the family with family ID " + s);
                         }
                         else if(marriedDate.equals(divorceDate))
                         {
-                            System.out.println("\nError in GEDCOM File:Marriage Date and Divorce date are same" +
+                            System.out.println("\nError in GEDCOM File_User Story04 :Marriage Date and Divorce date are same" +
                                     " for the family with family ID " + s);
                         }
                     } else {
-                        System.out.println("\nError in GEDCOM File:In family with family ID " + s + " Marriage date and Divorce date is not mentioned");
+                        System.out.println("\nError in GEDCOM File_User Story04 :In family with family ID " + s + " Marriage date and Divorce date is not mentioned");
                     }
 
 
@@ -44,10 +45,10 @@ public class UserStory4UserStory5 {
                 {
                     marriedDate = formatGEDCOM.StringtoDate(familyValues[0]);
                     if (marriedDate.after(tdate)) {
-                        System.out.println("\nError in GEDCOM File:Marriage date is mentioned in the family with family ID  " + s + " is a future date");
+                        System.out.println("\nError in GEDCOM File_User Story04 :Marriage date is mentioned in the family with family ID  " + s + " is a future date");
                     }
                 } else if ((familyValues[0].equalsIgnoreCase("NA")) && (!familyValues[1].equalsIgnoreCase("NA"))) {
-                    System.out.println("\nError in GEDCOM File:In family with family ID " + s + " Divorce date is mentioned but Marriage Date not mentioned");
+                    System.out.println("\nError in GEDCOM File_User Story04 :In family with family ID " + s + " Divorce date is mentioned but Marriage Date not mentioned");
 
                 }
             }
@@ -85,17 +86,17 @@ public class UserStory4UserStory5 {
                         {
                             if(individualValues[1].trim().equalsIgnoreCase("M"))
                             {
-                                System.out.println("\nError in GEDCOM File: Husband's death date with individual ID " +iKey+" is before marriage date for" +
+                                System.out.println("\nError in GEDCOM File_User Story05 : Husband's death date with individual ID " +iKey+" is before marriage date for" +
                                         "the family with family ID "+key);
                             }
                             else if(individualValues[1].trim().equalsIgnoreCase("F"))
                             {
-                                System.out.println("\nError in GEDCOM File: Wife's death date with individual ID " +iKey+" is before marriage date for" +
+                                System.out.println("\nError in GEDCOM File_User Story05: Wife's death date with individual ID " +iKey+" is before marriage date for" +
                                         "the family with family ID "+key);
                             }
                             else
                             {
-                                System.out.println("\nError in GEDCOM File: Wife/Husband's(Gender not mentioned) death date with individual ID " +iKey+" is before marriage date for" +
+                                System.out.println("\nError in GEDCOM File_User Story05 : Wife/Husband's(Gender not mentioned) death date with individual ID " +iKey+" is before marriage date for" +
                                         "the family with family ID "+key);
                             }
                         }

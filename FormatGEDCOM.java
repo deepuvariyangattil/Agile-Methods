@@ -39,7 +39,7 @@ public class FormatGEDCOM {
 
         String filedata = "";
         String filePath;
-        filePath = "F:\\Stevens_Masters\\Fall 18\\Agile\\Week 4\\Deepu_Variyangattil.ged";
+        filePath = "C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint3\\src\\Deepu_Variyangattil.ged";
         CharSequence charSequenceIndividual = "INDI";
         CharSequence charSequenceFamily = "FAM";
         //CharSequence charSequenceChild = "FAMC";
@@ -298,7 +298,7 @@ public class FormatGEDCOM {
             e.printStackTrace();
         }
 
-        printTable(individualMap,FamilyMap);
+        //printTable();
 
     }
 
@@ -314,7 +314,7 @@ public class FormatGEDCOM {
         return formattedDate;
 
     }
-    public void printTable(HashMap<String,String[]> individualMap,HashMap<String,String[]> FamilyMap )
+    public void printTable( )
     {
         String[] temp = new String[100];
         String[] set = new String[1000];
@@ -349,8 +349,14 @@ public class FormatGEDCOM {
         for (String iterator_Key : set) {
             if (iterator_Key != null) {
                 temp = FamilyMap.get(iterator_Key);
-                System.out.println(String.format("%1s%14s%14s%14s%25s%14s%21s%11s", iterator_Key, temp[0], temp[1], temp[2], temp[3],
-                        temp[4], temp[5], temp[6]));
+                if (iterator_Key.length() == 2) {
+                    System.out.println(String.format("%1s%14s%14s%14s%25s%14s%21s%11s", iterator_Key, temp[0], temp[1], temp[2], temp[3],
+                            temp[4], temp[5], temp[6]));
+                }else if (iterator_Key.length() == 3) {
+                    System.out.println(String.format("%1s%13s%14s%14s%25s%14s%21s%11s", iterator_Key, temp[0], temp[1], temp[2], temp[3],
+                            temp[4], temp[5], temp[6]));
+                }
+
 
             }
         }

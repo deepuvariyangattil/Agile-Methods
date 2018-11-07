@@ -9,6 +9,7 @@ public class uniqueIndividualAndFamilyIDCheck {
     public boolean uniqueIDCheck(String filePath) {
         FileReader fileReader = null;
         String fileData;
+        ErrorMessages errorMessages=new ErrorMessages();
         boolean output = false;
         CharSequence charSequence_ID = "0 @I";
         CharSequence charSequence_FAM = "0 @F";
@@ -32,8 +33,13 @@ public class uniqueIndividualAndFamilyIDCheck {
             for (int i = 0; i < indiID.size(); i++) {
                 for (int j = i + 1; j < indiID.size(); j++) {
                     if (indiID.elementAt(i).equalsIgnoreCase(indiID.elementAt(j))) {
-                        System.out.println("ERROR in the GEDCOM FILE: Inidividual ID " + indiID.elementAt(i) + " has a duplicate in GEDCOM file ");
-                    }output = true;
+
+                        String message="Duplicate individual ID found in GEDCOM file";
+                        String individualID=indiID.elementAt(i);
+                        errorMessages.IndividualTableErrorMessages(message,individualID,"UserStory22");
+                        //System.out.println("ERROR in the GEDCOM FILE: Inidividual ID " + indiID.elementAt(i) + " has a duplicate in GEDCOM file ");
+                        output = true;
+                    }
                 }
             }
         }
@@ -66,8 +72,12 @@ public class uniqueIndividualAndFamilyIDCheck {
             for (int i = 0; i < famID.size(); i++) {
                 for (int j = i + 1; j < famID.size(); j++) {
                     if (famID.elementAt(i).equalsIgnoreCase(famID.elementAt(j))) {
-                        System.out.println("ERROR in the GEDCOM FILE: FAMILY ID " + famID.elementAt(i) + " has a duplicate in GEDCOM file ");
-                    }output = true;
+                        String message="Duplicate family ID found in GEDCOM file";
+                        String familyID=famID.elementAt(i);
+                        errorMessages.FamilyTableErrorMessages(message,familyID,"UserStory22");
+                        //System.out.println("ERROR in the GEDCOM FILE: FAMILY ID " + famID.elementAt(i) + " has a duplicate in GEDCOM file ");
+                        output = true;
+                    }
                 }
             }
 

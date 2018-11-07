@@ -1,4 +1,3 @@
-package com.VedantSoni;
 import java.text.ParseException;
 import java.util.HashMap;
 
@@ -6,52 +5,34 @@ public class uniqueNameAndBirthdayCheck {
 
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 
-    public uniqueNameAndBirthdayCheck(){}
+    public uniqueNameAndBirthdayCheck() {
+    }
 
-    public boolean uniqueNameandBirthday_US23(HashMap<String, String[]>individual, HashMap<String, String[]>individual1) throws ParseException {
-        formatGEDCOM.GedcomTable();
-        HashMap<String, String[]> Individual = formatGEDCOM.getIndividualMap();
+    public boolean uniqueNameandBirthday_US23(HashMap<String, String[]> Individual) throws ParseException {
+
         ErrorMessages em = new ErrorMessages();
 
         String[] indiValues = new String[100];
         String[] indiValues1 = new String[100];
-        Boolean output=false;
+        Boolean output = false;
+        String temp="";
 
         for (String s : Individual.keySet()) {
             indiValues = Individual.get(s);
 
             for (String s1 : Individual.keySet()) {
                 indiValues1 = Individual.get(s1);
+                if(!(temp.equalsIgnoreCase(s))) {
 
-                for (int i = 0; i < indiValues.length; i++) {
-
-                    for (int j = i + 1; j < indiValues1.length; j++) {
-
-                           for (int k = 0; k < indiValues.length; k++) {
-
-                                for (int l = k + 1; l < indiValues1.length; l++) {
-
-                                    if (indiValues[0].equals(indiValues1[0]) && indiValues[i].equals(indiValues1[j])){
-
-                                    if (indiValues[2].equals(indiValues1[2]) && indiValues[k].equals(indiValues1[l])) {
-
-                                        em.IndividualTableErrorMessages("Name and birthdate are the same",s,"US23");
-
-                                    }output = true;
-
-
-                                }
-
-
-                            }
-                        }
-
+                    if ((!(s.equals(s1))) && indiValues[0].equals(indiValues1[0]) && indiValues[2].equals(indiValues1[2])) {
+                        temp = s1;
+                        String individualID = s + "," + s1;
+                        em.IndividualTableErrorMessages("Name and Birth date is same for two individuals", individualID, "UserStory23");
+                        output = true;
                     }
-
-
                 }
-
             }
-        }return output;
+        }
+        return output;
     }
 }
