@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Scanner;
 
 
 public class FormatGEDCOM {
@@ -39,6 +40,10 @@ public class FormatGEDCOM {
 
         String filedata = "";
         String filePath;
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter GEDCOM File Path");
+        System.out.println("Path should be like C:\\FolderName\\filename.ged");
+        //Path should be like C:\FolderName\filename.ged
         filePath = "C:\\Users\\DEEPUAISHU\\IdeaProjects\\Sprint3\\src\\Deepu_Variyangattil.ged";
         CharSequence charSequenceIndividual = "INDI";
         CharSequence charSequenceFamily = "FAM";
