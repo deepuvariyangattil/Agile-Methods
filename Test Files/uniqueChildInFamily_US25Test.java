@@ -25,10 +25,13 @@ public class uniqueChildInFamily_US25Test {
         Assert.assertTrue(b);
 
         Individual.clear();
+        Family.clear();
         indiValue = new String[]{"Christian/Philip/", "M", "16-11-1986", "32", "TRUE", "NA", "F1"};
         indiValue1 = new String[]{"Samir/Antony/", "M", "04-03-1998", "57", "TRUE", "NA", "F1"};
         Individual.put("I3", indiValue);
         Individual.put("I4", indiValue1);
+        famValue = new String[]{"08-07-2006", "NA", "I4", "Antony/Thomas/", "I12", "Sarah/Joe/", "I3 I4"};
+        Family.put("F2", famValue);
 
         b = obj.uniqueChild_US25(Family, Individual);
         Assert.assertFalse(b);
