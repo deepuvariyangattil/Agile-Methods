@@ -1,0 +1,13 @@
+1. Download or clone git directory Agile Methods
+2. Create a new project in intelliJ
+3. Keep all files finds in main folder(Agile-Methods) under src folder in intelliJ
+4. Keep all files in Test Files directory under test folder in intelliJ
+5. Make sure that you have integrated junit4.12 or later version in intelliJ
+6. Open "FormatGEDCOM.java" file under src folder in intelliJ and go to line 47.
+7. Change file path to where you have placed gedcom file downloaded from git(you can see gedcom file called Deepu_Variyangattil.ged in main folder). Save it
+8. Go to test folder in intelliJ and open UserStory22_TEST.java file
+9. Change filepath in line 14 and line 18 with your file path where you placed Vedant.ged,Vedant(with error).ged files.Save it.
+10. Run Sprint3.java to see output
+11. Run TestSuite_Sprint3.java in test folder in intelliJ to see output of test cases.
+
+Note: If you find any difficulty feel free to contact dvariyan@stevens.edu
