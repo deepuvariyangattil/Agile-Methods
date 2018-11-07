@@ -28,7 +28,7 @@ public class uniqueChildInFamily {
 
                             for(int i=0; i<childarray.length; i++){
 
-                                if(s1.matches(childarray[i])){
+                                if(s1.matches(childarray[i]) && s2.matches(childarray[i])){
 
                                     if(indiValues[0] == indiValues1[0] && indiValues[2] == indiValues1[2]){
 
