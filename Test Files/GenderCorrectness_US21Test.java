@@ -19,6 +19,7 @@ public class GenderCorrectness_US21Test {
         individual.put("I2",indivi2);
         individual.put("I3",indivi3);
         boolean output=new GenderCorrectness_US21().CorrectGender_US21(family,individual);
+        //Testing invalid scenario
         Assert.assertTrue(output);
         family.clear();
         individual.clear();
@@ -31,6 +32,7 @@ public class GenderCorrectness_US21Test {
         individual.put("I8",indivi2);
         individual.put("I7",indivi3);
         output=new GenderCorrectness_US21().CorrectGender_US21(family,individual);
+        //Testing valid scenario
         Assert.assertFalse(output);
     }
 }
