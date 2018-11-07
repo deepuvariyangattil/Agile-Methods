@@ -6,14 +6,10 @@ public class US31_US32{
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
     
 
-public void StillSingle_US31() throws ParseException
+public static boolean StillSingle_US31(string indiValues) throws ParseException
 {
-	
-        formatGEDCOM.GedcomTable();
-        HashMap<String, String[]> Indi = formatGEDCOM.getIndividualMap();
-        String[] indiValues = new String[100];
         
-        
+       boolean t; 
         for (String s : Indi.keySet()) 
         {
             indiValues = Indi.get(s);
@@ -23,16 +19,12 @@ public void StillSingle_US31() throws ParseException
         	   int age;
             age=Integer.parseInt(indiValues[3]);
         	   if(age>30)
-        	   {System.out.println("The person living and single is "+indiValues[0]+"with id as "+s);}
+        	   {System.out.println("The person living and single is "+indiValues[0]+"with id as "+s);t=true;return t;}
         	   
             }
+       
+
         }
-
-
-
-}
-
-
 
 
 
@@ -64,26 +56,8 @@ public void MultipleBirths_US32() throws ParseException
     		
     		
     	}
-   }
-	
-    
-    
+   }    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
