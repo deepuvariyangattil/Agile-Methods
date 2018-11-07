@@ -10,7 +10,7 @@ public class ErrorMessages {
     public boolean IndividualTableErrorMessages(String message,String individualID,String userStory)
     {
         boolean result=true;
-        System.out.println("Error in GEDCOM File_"+userStory+" :"+message+" in the the individual table with individual ID "+individualID+"\n");
+        System.out.println("Error in GEDCOM File_"+userStory+" :"+message+" in the individual table with individual ID "+individualID+"\n");
         return result;
     }
     public boolean FamilyAndIndividualTableErrorMessages(String message,String individualID,String familyID,String userStory)
