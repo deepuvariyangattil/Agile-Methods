@@ -1,0 +1,214 @@
+
+
+
+ Individual
+
+
+ID           NAME               GENDER     BIRTHDAY       AGE       ALIVE         DEATH      CHILD      SPOUSE
+==       ============           ======      ========      ===       =====        ========    =====      ======
+I20      Poorna/Vijay/             F      02-04-1985      26       False       14-01-2011                   F0
+I1      George/Thomas/             M      02-05-1985      33        True               NA     F2            F1
+I22       Naseer/Ajay/             M      05-07-2012       6        True               NA     F0              
+I2       Thomas/Peter/             M      02-10-1950      68        True               NA     F4         F2 F3
+I21      Ajay/Krishna/             M      02-04-1935      75       False       14-01-2010                   F0
+I3        Alice/James/             F      12-02-1960      58        True               NA     F5            F2
+I24      Athul/Gandhi/             M      05-07-1978      40        True               NA                  F11
+I4      Antony/Thomas/             M      05-05-1987      -1       False       08-02-1986     F2            F6
+I23          Faze/Daz/             F      05-07-2000      18        True               NA                   F5
+I5      Sheela/Thomas/             F      18-04-1790     228        True               NA     F2              
+I26      Sunil/Shetty/             M      05-07-2015       3        True               NA    F11              
+I6       Sarah/Habber/             F      03-08-1958      60        True               NA                   F3
+I25   Priyanka/Chopra/             F      05-07-1985      33        True               NA                  F11
+I7        Fabi/Thomas/             F      19-12-1999      19        True               NA     F3            F7
+I28  Sangeetha/Chopra/             F      05-07-1985      33        True               NA                  F12
+I8     Shinto/Francis/             M      04-03-1968      50        True               NA                   F7
+I27      Sharukh/Khan/             M      05-07-1978      40        True               NA                  F12
+I9          Teena/Joy/             F      02-04-1935      83        True               NA     F7              
+I29      Punit/Shetty/             M      05-07-2015       3        True               NA    F12              
+I31     Rashmi/Chopra/             F      05-07-1985      33        True               NA                  F14
+I30         Amir/Khan/             M      05-07-1978      40       False       14-10-2018                  F14
+I11        Dan/George/             M      07-01-2011       7        True               NA     F8              
+I33     Prakash/Yadav/             M      05-07-2015       3        True               NA    F14              
+I10       Deva/George/             F      16-05-1986      32        True               NA                   F1
+I32     Prakash/Yadav/             M      05-07-2015       3        True               NA    F14              
+I13  Christian/Philip/             M      16-11-1986      32        True               NA                     
+I12         Sarah/Joe/             F      16-07-2088     -70        True               NA                F6 F8
+I15   Shone/Christian/             M      07-01-2011       7        True               NA     F8              
+I14      Samir/Antony/             M      05-07-2008      10        True               NA     F6              
+I17        Mary/Peter/             F      09-02-1925      75       False       09-01-2000                   F4
+I16      Peter/Antony/             M      19-04-1920      85       False       15-02-2005                   F4
+I18         Teena/Joy/             F      02-04-1935      76       False       14-01-2011                   F5
+
+
+
+Family
+
+
+
+ID    MARRIED         DIVORCED     HUSBANDID            HUSBANDNAME             WIFEID          WIFENAME        CHILDREN
+==    =======         ========      =========           ===========             ======          ========        ========
+F6    08-07-2011            NA           I12               Sarah/Joe/            I4       Antony/Thomas/        I14
+F7    07-09-2000    06-01-2004            I8          Shinto/Francis/            I7         Fabi/Thomas/         I9
+F8    11-03-2010            NA           I13        Christian/Philip/           I12           Sarah/Joe/        I15
+F12   09-05-2012    06-01-2014           I27            Sharukh/Khan/           I28    Sangeetha/Chopra/        I29
+F11   09-05-2016            NA           I24            Athul/Gandhi/           I25     Priyanka/Chopra/        I26
+F14   09-05-2012            NA           I30               Amir/Khan/           I31       Rashmi/Chopra/    I32 I33
+F0    11-03-2000            NA           I21            Ajay/Krishna/           I20        Poorna/Vijay/        I22
+F1    09-05-2006            NA            I1           George/Thomas/            I5       Sheela/Thomas/        I11
+F2    30-11-1973            NA            I2            Thomas/Peter/            I3         Alice/James/   I1 I4 I5
+F3    12-03-1970    06-01-1968            I2            Thomas/Peter/            I6        Sarah/Habber/         I7
+F4    12-01-2019            NA           I16            Peter/Antony/           I17          Mary/Peter/         I2
+F5    08-07-1956            NA           I18               Teena/Joy/           I23            Faze/Daz/         I3
+
+Sprint 1 & 2 User stories output
+
+
+Error in GEDCOM File_User Story04 :Marriage Date is after Divorce date  for the family with family ID F3
+
+Error in GEDCOM File_User Story04 :Marriage date is mentioned in the family with family ID  F4 is a future date
+
+Error in GEDCOM File_User Story05 : Husband's death date with individual ID I4 is before marriage date forthe family with family ID F6
+
+Error in GEDCOM File_User Story05: Wife's death date with individual ID I17 is before marriage date forthe family with family ID F4
+
+Error in GEDCOM File_User Story05 : Husband's death date with individual ID I16 is before marriage date forthe family with family ID F4
+
+
+User Story 31_The person living and single is Sheela/Thomas/with id as I5
+User Story 31_The person living and single is Teena/Joy/with id as I9
+User Story 31_The person living and single is Christian/Philip/with id as I13
+User Story32_Athul/Gandhi/ and Sharukh/Khan/ are a multiple birth
+User Story32_Priyanka/Chopra/ and Sangeetha/Chopra/ are a multiple birth
+User Story32_Priyanka/Chopra/ and Rashmi/Chopra/ are a multiple birth
+User Story32_Sangeetha/Chopra/ and Priyanka/Chopra/ are a multiple birth
+User Story32_Sangeetha/Chopra/ and Rashmi/Chopra/ are a multiple birth
+User Story32_Sharukh/Khan/ and Athul/Gandhi/ are a multiple birth
+User Story32_Rashmi/Chopra/ and Priyanka/Chopra/ are a multiple birth
+User Story32_Rashmi/Chopra/ and Sangeetha/Chopra/ are a multiple birth
+User Story32_Dan/George/ and Shone/Christian/ are a multiple birth
+User Story32_Shone/Christian/ and Dan/George/ are a multiple birth
+
+
+Error in GEDCOM File_User Story18 :I1 I5 are couples and siblings
+
+Error in GEDCOM File_User Story18 :I4 I4 are couples and siblings
+
+
+ ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID I5
+
+
+Error in GEDCOM File__UserStory1: Individual with individual ID I12 is having birth date after today's date
+
+Error in GEDCOM File_UserStory1: Family with Family ID F4 is having marriage date after today's date
+
+Error in GEDCOM File_UserStory2: Husband's birth date is after married date for the family with family ID F6
+
+Error in GEDCOM File_UserStory2: Wife's birth date is after married date for the family with family ID F8
+
+Error in GEDCOM File_UserStory2: Wife's birth date is after married date for the family with family ID F5
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F6,I12 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F7,I7 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F8,I12 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F0,I20 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F2,I3 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F3,I6 respectively
+
+Error in GEDCOM File_UserStory10 :Wife married before 14 years old in the family and individual tables with family ID and individual ID as F5,I23 respectively
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F6
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F7
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F8
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F12
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F11
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F14
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F14
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F0
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F1
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F2
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F2
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F2
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F3
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F4
+
+Error in GEDCOM File_UserStory16 :Child and Father has different last names  in the the family table with family ID F5
+
+Error in GEDCOM File_UserStory22 :Duplicate individual ID found in GEDCOM file in the individual table with individual ID I18
+
+Error in GEDCOM File_UserStory22 :Duplicate family ID found in GEDCOM file in the the family table with family ID F0
+
+Error in GEDCOM File_UserStory23 :Name and Birth date is same for two individuals in the individual table with individual ID I9,I18
+
+Error in GEDCOM File_UserStory23 :Name and Birth date is same for two individuals in the individual table with individual ID I33,I32
+
+Error in GEDCOM File_UserStory23 :Name and Birth date is same for two individuals in the individual table with individual ID I18,I9
+
+Error in GEDCOM File_US03 :birthdate is after death Date in the individual table with individual ID I4
+
+Error in GEDCOM File_US04 :marriage date is after Death Date in the individual table with individual ID F3
+
+Error in GEDCOM File_UserStory33 :Individual is an orphan in the individual table with individual ID I22
+
+Error in GEDCOM File_UserStory34 :Ajay/Krishna/ is more than twice as old as Poorna/Vijay/ in the individual table with individual ID I21,I20
+
+Error in GEDCOM File_UserStory34 :Shinto/Francis/ is more than twice as old as Fabi/Thomas/ in the individual table with individual ID I8,I7
+
+Error in GEDCOM File_UserStory34 :Teena/Joy/ is more than twice as old as Faze/Daz/ in the individual table with individual ID I18,I23
+
+Sprint 3 User stories
+
+Deepu's sprint 3 user stories
+
+Error in GEDCOM File_UserStory21 :Husband's gender is not Male in the family and individual tables with family ID and individual ID as F6,I12 respectively
+
+Error in GEDCOM File_UserStory21 :Wife's gender is not Male in the family and individual tables with family ID and individual ID as F6,I4 respectively
+
+Error in GEDCOM File_UserStory21 :Husband's gender is not Male in the family and individual tables with family ID and individual ID as F5,I18 respectively
+
+List of Living Married people_UserStory30 :
+[Sarah/Joe/, Shinto/Francis/, Fabi/Thomas/, Christian/Philip/, Sarah/Joe/, Sharukh/Khan/, Sangeetha/Chopra/, Athul/Gandhi/, Priyanka/Chopra/, Rashmi/Chopra/, George/Thomas/, Sheela/Thomas/, Thomas/Peter/, Alice/James/, Thomas/Peter/, Sarah/Habber/, Faze/Daz/]
+
+Vedant's sprint 3 user stories
+
+List of All Deceased People_UserStory29 :
+[Poorna/Vijay/, Ajay/Krishna/, Antony/Thomas/, Amir/Khan/, Mary/Peter/, Peter/Antony/, Teena/Joy/]
+Error in GEDCOM File_UserStory25 :Name and Birthdate same for children in the individual table with individual ID I32,I33
+
+
+Nisheet's sprint 3 user stories
+
+List of Recent survivors_UserStory_37 :
+[Rashmi/Chopra/, Prakash/Yadav/, Prakash/Yadav/]
+List of couple celebrating upcoming anniversaries_UserStory39 :
+[Thomas/Peter/ & Alice/James/]
+
+Susheel's sprint 3 user stories
+
+Error in GEDCOM File_UserStory08 : Child born after divorce in the family and individual tables with family ID and individual ID as F12,I29 respectively
+
+Error in GEDCOM File_UserStory08 : Child born after divorce in the family and individual tables with family ID and individual ID as F3,I7 respectively
+
+Error in GEDCOM File_UserStory09 : Child born after parents died in the family and individual tables with family ID and individual ID as F6,I14 respectively
+
+Error in GEDCOM File_UserStory09 : Child born after parents died in the family and individual tables with family ID and individual ID as F0,I22 respectively
+
+
+Process finished with exit code 0
