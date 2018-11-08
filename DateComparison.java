@@ -23,7 +23,7 @@ public class DateComparison
         for (String fam : keyf) {
             valuef = FamilyMap.get(fam);
             String wifeId = valuef[4];
-            String childID[] = valuef[6].split(" ");
+            String childID[] = valuef[6].trim().split(" ");
             valuei = individualMap.get(wifeId);
 
             if (valuei[5] != null) {
@@ -31,14 +31,17 @@ public class DateComparison
                     Date deathDate = obj.StringtoDate(valuei[5]);
                     // System.out.println(deathDate);
                     int l = childID.length - 1; // no. of children
+
                     while (l >=0) {
 
                         valuec = individualMap.get(childID[l]);
-                        Date birthdate = obj.StringtoDate(valuec[2]);
-                        if (birthdate.after(deathDate)) {
-                            error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "UserStory09");
-                            result = true;
-                        }
+
+                            Date birthdate = obj.StringtoDate(valuec[2]);
+                            if (birthdate.after(deathDate)) {
+                                error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "UserStory09");
+                                result = true;
+                            }
+
 
                         l--;
                     }
@@ -50,7 +53,7 @@ public class DateComparison
         for (String fam : keyf) {
             valuef = FamilyMap.get(fam);
             String husbandId = valuef[2];
-            String childID[] = valuef[6].split(" ");
+            String childID[] = valuef[6].trim().split(" ");
             valuei = individualMap.get(husbandId);
 
             if (valuei[5] != null) {
