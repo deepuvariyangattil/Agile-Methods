@@ -54,4 +54,38 @@ public class ListOfPeopleTest {
         }
 
     }
+	@Test
+    public void recentBirths_US35TESTCASE()throws ParseException{
+
+
+        HashMap<String,String[]> Individual=new HashMap<>(100);
+
+        String[] indiValue1 = {"Christian/Philip/", "M", "15-10-2018", "3", "True", "NA", "F8"};
+        String[] indiValue2 = {"Fabi/Thomas/", "F", "08-11-2018", "21", "True", "NA", "F9"};
+        Individual.put("I1", indiValue1);
+        Individual.put("I2", indiValue2);
+
+        boolean b = obj.recentBirths_US35(Individual);
+        Assert.assertTrue(b);
+
+
+
+ }
+	@Test
+    public void recentBirths_US36TESTCASE ()throws ParseException {
+
+
+        HashMap<String,String[]> Individual=new HashMap<>(100);
+
+        String[] indiValue1 = {"Christian/Philip/", "M", "21-03-1972", "3", "False", "07-11-2018", "F8"};
+        String[] indiValue2 = {"Fabi/Thomas/", "F", "08-11-1991", "21", "False", "14-10-2018", "F9"};
+        Individual.put("I1", indiValue1);
+        Individual.put("I2", indiValue2);
+
+        boolean b = obj.recentDeaths_US36(Individual);
+        Assert.assertTrue(b);
+
+
+
+    }	
 }
