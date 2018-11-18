@@ -72,7 +72,7 @@ public class ListOfPeopleTest {
 
  }
 	@Test
-    public void recentBirths_US36TESTCASE ()throws ParseException {
+    public void recentDeaths_US36TESTCASE ()throws ParseException {
 
 
         HashMap<String,String[]> Individual=new HashMap<>(100);
