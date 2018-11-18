@@ -10,6 +10,52 @@ public class ListOfPeople {
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 
     public ListOfPeople(){}
+    
+    public boolean recentBirths_US35(HashMap<String, String[]> Individual) throws ParseException {
+
+        formatGEDCOM.GedcomTable();
+        ErrorMessages em = new ErrorMessages();
+        String[] indiValues = new String[100];
+        String[] indiValues1 = new String[100];
+        Vector<String> recent_Births = new Vector<String>(100);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        java.util.Date date1 = sdf.parse("15-10-2018");
+        boolean output = false;
+
+        for (String s : Individual.keySet()) {
+            indiValues = Individual.get(s);
+            if (indiValues[4] == "True") {
+
+                java.util.Date date = new Date(0);
+                String fDate;
+                DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                fDate = dateFormat.format(date);
+                date = new SimpleDateFormat("dd-MM-yyyy").parse(indiValues[2]);
+
+                try {
+
+                    if (date.after(date1)) {
+                        for (String s1 : Individual.keySet()) {
+                            indiValues1 = Individual.get(s1);
+                            {
+
+                                if (indiValues[2].equals(indiValues1[2])) {
+                                    recent_Births.add(indiValues[0]);
+                                    output = true;
+                                }
+                            }
+                        }
+                    }
+
+                } catch (Exception e) {
+                    continue;
+                }
+            }
+        }
+        em.ListPrint("All Recent Births", recent_Births, "UserStory35" );
+        output = true;
+        return output;
+    }
 
     public boolean recentDeaths_US36(HashMap<String, String[]> Individual) throws ParseException {
 
