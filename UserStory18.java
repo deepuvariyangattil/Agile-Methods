@@ -2,15 +2,13 @@ import java.util.HashMap;
 
 public class UserStory18 {
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
+    IssueLine issueLine=new IssueLine();
+    ErrorMessages errorMessages=new ErrorMessages();
 
-    public UserStory18() {
-        formatGEDCOM.GedcomTable();
 
-    }
-    public void FindSiblingSpouse_US18()
+    public boolean FindSiblingSpouse_US18(HashMap<String, String[]>familyMap,HashMap<String, String[]>indiMap)
     {
-        HashMap<String, String[]>familyMap=formatGEDCOM.getFamilyMap();
-        HashMap<String, String[]>indiMap=formatGEDCOM.getIndividualMap();
+        boolean result=false;
         String[] familyvalues,childarray,spusearray,indivalues,familycomp=new String[100];
         HashMap<String,String> spouseName=new HashMap<>(100);
         for(String s:familyMap.keySet())
@@ -49,15 +47,22 @@ public class UserStory18 {
                 {
                     for(int y=0;y<childarray.length;y++)
                     {
-                        if(spouseName.get(z).equalsIgnoreCase(childarray[y]))
+                        if((spouseName.get(z).equalsIgnoreCase(childarray[y]))&&!(s.equalsIgnoreCase(temp)))
                         {
-                            System.out.println("Error in GEDCOM File_User Story18 :"+z+" "+spouseName.get(z)+" are couples and siblings\n");
+                            String message="Siblings married";
+                            String familyID=s;
+                            int linenumber=issueLine.GetLineNumber_Family(familyID,familyID);
+                            errorMessages.FamilyTableErrorMessages(message,familyID,"UserStory18",linenumber);
+                            temp=s;
+                            result=true;
+                            //System.out.println("Error in GEDCOM File_User Story18 :"+z+" "+spouseName.get(z)+" are couples and siblings\n");
                         }
 
                     }
                 }
             }
         }
+        return  result;
     }
 
 }
