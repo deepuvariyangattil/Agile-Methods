@@ -10,6 +10,7 @@ public class PersonBeforeDeathScenario {
 
 	public static FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 	ErrorMessages error = new ErrorMessages();
+	IssueLine issueLine=new IssueLine();
 
 	PersonBeforeDeathScenario() {
 		formatGEDCOM.GedcomTable();
@@ -28,7 +29,8 @@ public class PersonBeforeDeathScenario {
 					birthDate = formatGEDCOM.StringtoDate(indiValues[2]);
 					deathDate = formatGEDCOM.StringtoDate(indiValues[5]); // check if death date is coming
 					if (birthDate.after(deathDate)) {
-						return error.IndividualTableErrorMessages("birthdate is after death Date", s, "US03");
+						int errorline=issueLine.GetLineNumber_Individual(s,indiValues[2]);
+						return error.IndividualTableErrorMessages("birthdate is after death Date", s, "UserStory03",errorline);
 					}
 				}
 
@@ -55,7 +57,8 @@ public class PersonBeforeDeathScenario {
 					divorseDate = formatGEDCOM.StringtoDate(familyValues[1]);
 
 					if (marriageDate.after(divorseDate)) {
-						return error.IndividualTableErrorMessages("marriage date is after Death Date",s, "US04" );
+						int errorline=issueLine.GetLineNumber_Family(s,familyValues[0]);
+						return error.FamilyTableErrorMessages("marriage date is after Divorce Date",s, "UserStory04",errorline );
 					}
 				}
 
