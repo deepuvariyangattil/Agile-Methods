@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class uniqueIndividualAndFamilyIDCheck {
+    IssueLine issueLine=new IssueLine();
 
     public boolean uniqueIDCheck(String filePath) {
         FileReader fileReader = null;
@@ -36,7 +37,8 @@ public class uniqueIndividualAndFamilyIDCheck {
 
                         String message="Duplicate individual ID found in GEDCOM file";
                         String individualID=indiID.elementAt(i);
-                        errorMessages.IndividualTableErrorMessages(message,individualID,"UserStory22");
+                        int errorline=issueLine.GetLineNumber_Individual(individualID,individualID);
+                        errorMessages.IndividualTableErrorMessages(message,individualID,"UserStory22",errorline);
                         //System.out.println("ERROR in the GEDCOM FILE: Inidividual ID " + indiID.elementAt(i) + " has a duplicate in GEDCOM file ");
                         output = true;
                     }
@@ -74,7 +76,8 @@ public class uniqueIndividualAndFamilyIDCheck {
                     if (famID.elementAt(i).equalsIgnoreCase(famID.elementAt(j))) {
                         String message="Duplicate family ID found in GEDCOM file";
                         String familyID=famID.elementAt(i);
-                        errorMessages.FamilyTableErrorMessages(message,familyID,"UserStory22");
+                        int errorline=issueLine.GetLineNumber_Family(familyID,familyID);
+                        errorMessages.FamilyTableErrorMessages(message,familyID,"UserStory22",errorline);
                         //System.out.println("ERROR in the GEDCOM FILE: FAMILY ID " + famID.elementAt(i) + " has a duplicate in GEDCOM file ");
                         output = true;
                     }
