@@ -4,18 +4,12 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class US1_US2 {
+    IssueLine issueLine=new IssueLine();
+    ErrorMessages errorMessages=new ErrorMessages();
     FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 
-    public US1_US2() {
-        formatGEDCOM.GedcomTable();
-
-    }
-
-    public void checkDatesWithToday() throws ParseException {
-
-
-        HashMap<String, String[]> Indi = formatGEDCOM.getIndividualMap();
-        HashMap<String, String[]> familyMap = formatGEDCOM.getFamilyMap();
+    public boolean checkDatesWithToday(HashMap<String, String[]> familyMap,HashMap<String, String[]> Indi) throws ParseException {
+        boolean result=false;
         Date tDate = new Date();
         Date marriedDate, birthDate, divorceDate, deathDate;
         String[] familyValues, indiValues = new String[100];
@@ -26,14 +20,20 @@ public class US1_US2 {
                     birthDate = formatGEDCOM.StringtoDate(indiValues[2]);
 
                     if (birthDate.after(tDate)) {
-                        System.out.println("Error in GEDCOM File__UserStory1: Individual with individual ID " + s + " is having birth date after " +
-                                "today's date\n");
+                        String message="Individual is having birth date after today's date";
+                        int errorline=issueLine.GetLineNumber_Individual(s,indiValues[2]);
+                        errorMessages.IndividualTableErrorMessages(message,s,"UserStory01",errorline);
+                        result=true;
+
                     }
-                } else if (!(indiValues[2].equalsIgnoreCase("NA"))) {
-                    deathDate = formatGEDCOM.StringtoDate(indiValues[4]);
+                }if (!(indiValues[5].equalsIgnoreCase("NA"))) {
+                    deathDate = formatGEDCOM.StringtoDate(indiValues[5]);
                     if (deathDate.after(tDate)) {
-                        System.out.println("Error in GEDCOM File_UserStory1: Individual with individual ID " + s + " is having death date after " +
-                                "today's date\n");
+                        String message="Individual is having death date after today's date";
+                        int errorline=issueLine.GetLineNumber_Individual(s,indiValues[4]);
+                        errorMessages.IndividualTableErrorMessages(message,s,"UserStory01",errorline);
+                        result=true;
+
                     }
                 }
 
@@ -48,29 +48,34 @@ public class US1_US2 {
                 if (!(familyValues[0].trim().equalsIgnoreCase("NA"))) {
                     marriedDate = formatGEDCOM.StringtoDate(familyValues[0]);
                     if (marriedDate.after(tDate)) {
-                        System.out.println("Error in GEDCOM File_UserStory1: Family with Family ID " + t + " is having marriage date after " +
-                                "today's date\n");
+                        String message="Marriage date is after today's date";
+                        int errorline=issueLine.GetLineNumber_Family(t,familyValues[0]);
+                        errorMessages.FamilyTableErrorMessages(message,t,"UserStory01",errorline);
+                        result=true;
+
                     }
-                } else if (!(familyValues[1].trim().equalsIgnoreCase("NA"))) {
+                }  if (!(familyValues[1].trim().equalsIgnoreCase("NA"))) {
                     divorceDate = formatGEDCOM.StringtoDate(familyValues[1]);
                     if (divorceDate.after(tDate)) {
-                        System.out.println("Error in GEDCOM File_UserStory1: Family with Family ID " + t + " is having divorce date after " +
-                                "today's date\n");
+                        String message="Divorce date is after today's date";
+                        int errorline=issueLine.GetLineNumber_Family(t,familyValues[1]);
+                        errorMessages.FamilyTableErrorMessages(message,t,"UserStory01",errorline);
+                        result=true;
+
                     }
                 }
             } catch (Exception e) {
                 continue;
             }
         }
+        return result;
     }
 
-    public void checkMarriageWithBirth() throws ParseException {
+    public boolean checkMarriageWithBirth(HashMap<String,String[]>familyMap,HashMap<String,String[]>indiMap) throws ParseException {
 
-        HashMap<String,String[]>familyMap=formatGEDCOM.getFamilyMap();
-        HashMap<String,String[]>indiMap=formatGEDCOM.getIndividualMap();
         String[] familyValues,indiValuesHus,indiValuesWife=new String[100];
         Date birthDateHus,marriedDate,birthDateWife;
-
+        boolean result=false;
         for(String s: familyMap.keySet())
         {
             familyValues=familyMap.get(s);
@@ -83,13 +88,18 @@ public class US1_US2 {
                 birthDateWife=formatGEDCOM.StringtoDate(indiValuesWife[2]);
                 if(birthDateHus.after(marriedDate))
                 {
-                    System.out.println("Error in GEDCOM File_UserStory2: Husband's birth date is after married date for the family " +
-                            "with family ID "+s+"\n");
+                    String message="Husband's birth date is after married date";
+                    int errorline=issueLine.GetLineNumber_Individual(familyValues[2],indiValuesHus[2]);
+                    errorMessages.FamilyAndIndividualTableErrorMessages(message,familyValues[2],s,"UserStory02",errorline);
+                    result=true;
+
                 }
                 if(birthDateWife.after(marriedDate))
                 {
-                    System.out.println("Error in GEDCOM File_UserStory2: Wife's birth date is after married date for the family " +
-                            "with family ID "+s+"\n");
+                    String message="Wife's birth date is after married date";
+                    int errorline=issueLine.GetLineNumber_Individual(familyValues[4],indiValuesWife[2]);
+                    errorMessages.FamilyAndIndividualTableErrorMessages(message,familyValues[4],s,"UserStory02",errorline);
+                    result=true;
                 }
 
             }
@@ -98,6 +108,7 @@ public class US1_US2 {
                 continue;
             }
         }
+        return result;
 
     }
 }
