@@ -7,19 +7,19 @@ public class ErrorMessagesTest {
 
     @Test
     public void familyTableErrorMessages() {
-        boolean b=new ErrorMessages().FamilyTableErrorMessages("Data is not correct","F6","User Story15");
+        boolean b=new ErrorMessages().FamilyTableErrorMessages("Data is not correct","F6","User Story15",100);
         Assert.assertTrue(b);
     }
 
     @Test
     public void individualTableErrorMessages() {
-        boolean b=new ErrorMessages().IndividualTableErrorMessages("Data is wrong","I1","User Story 20");
+        boolean b=new ErrorMessages().IndividualTableErrorMessages("Data is wrong","I1","User Story 20",150);
         Assert.assertTrue(b);
     }
 
     @Test
     public void familyAndIndividualTableErrorMessages() {
-        boolean b=new ErrorMessages().FamilyAndIndividualTableErrorMessages("Data to be corrected","I5","F7","UserStory24");
+        boolean b=new ErrorMessages().FamilyAndIndividualTableErrorMessages("Data to be corrected","I5","F7","UserStory24",200);
         Assert.assertTrue(b);
     }
 
