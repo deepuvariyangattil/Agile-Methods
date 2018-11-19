@@ -6,14 +6,15 @@ import java.util.concurrent.TimeUnit;
 public class UserStory07 {
 
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
+    IssueLine issueLine=new IssueLine();
+    ErrorMessages errorMessages=new ErrorMessages();
 
-    public void ageLessThan150_US07() throws ParseException {
-        formatGEDCOM.GedcomTable();
-        HashMap<String, String[]> Individual = formatGEDCOM.getIndividualMap();
+    public boolean ageLessThan150_US07(HashMap<String, String[]> Individual) throws ParseException {
         String[] indiValues = new String[100];
         long differenceInDays, differenceInYears;
         Date birthdate, deathdate, tdate;
         tdate = new Date();
+        boolean result=false;
 
 
         for (String s : Individual.keySet()) {
@@ -31,7 +32,12 @@ public class UserStory07 {
                     differenceInYears = differenceInDays / 365;
 
                     if (differenceInYears > 150) {
-                        System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
+                        String message="age is more than 150";
+                        int linenumber=issueLine.GetLineNumber_Individual(s,indiValues[2]);
+                        errorMessages.IndividualTableErrorMessages(message,s,"UserStory07",linenumber);
+                        result=true;
+
+                       // System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
                     }
                 }
                 else if(indiValues[5].equalsIgnoreCase("NA")){
@@ -41,12 +47,17 @@ public class UserStory07 {
                     differenceInYears = differenceInDays/365;
 
                     if(differenceInYears > 150){
-                        System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
+                        String message="age is more than 150";
+                        int linenumber=issueLine.GetLineNumber_Individual(s,indiValues[2]);
+                        errorMessages.IndividualTableErrorMessages(message,s,"UserStory07",linenumber);
+                        result=true;
+                        //System.out.println("\n ERROR in the Input GEDCOM File_User Story 7: The age is more than 150 for the Individual ID " + s);
                     }
                 }
 
             }
 
         }
+        return result;
     }
 }
