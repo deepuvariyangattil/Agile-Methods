@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 public class ListOfPeople {
+    IssueLine issueLine=new IssueLine();
 
     public boolean ListLiving_US30(HashMap<String, String[]> family, HashMap<String, String[]> individual) {
         ErrorMessages errorMessages = new ErrorMessages();
@@ -25,7 +26,8 @@ public class ListOfPeople {
 
             } catch (Exception e) {
 
-                errorMessages.IndividualTableErrorMessages("Individual not present ", familyValues[2], "UserStory30");
+                int errorline=issueLine.GetLineNumber_Family(s,familyValues[2]);
+                errorMessages.IndividualTableErrorMessages("Individual not present ", familyValues[2], "UserStory30",errorline);
                 continue;
             }
             try {
@@ -37,7 +39,8 @@ public class ListOfPeople {
 
             } catch (Exception e) {
 
-                errorMessages.IndividualTableErrorMessages("Individual not present ", familyValues[4], "UserStory30");
+                int errorline=issueLine.GetLineNumber_Family(s,familyValues[4]);
+                errorMessages.IndividualTableErrorMessages("Individual not present ", familyValues[4], "UserStory30",errorline);
                 continue;
             }
 
@@ -200,6 +203,65 @@ public class ListOfPeople {
 
         return t;
 
+
+    }
+    public boolean StillSingle_US31(HashMap<String, String[]> Indi) throws ParseException {
+
+        ErrorMessages errorMessages = new ErrorMessages();
+        String[] indiValues = new String[100];
+        boolean result=false;
+        Vector<String> list = new Vector<>(100);
+        for (String s : Indi.keySet()) {
+            indiValues = Indi.get(s);
+            if (indiValues[5] == "NA")
+                if (indiValues[7] == "") {
+                    int age;
+                    age = Integer.parseInt(indiValues[3]);
+                    if (age > 30) {
+                        list.add(indiValues[0]);
+                        result=true;
+                        //System.out.println("User Story 31_The person living and single is "+indiValues[0]+"with id as "+s);
+                    }
+
+                }
+        }
+        errorMessages.ListPrint("living people over 30 who have never been married", list, "UserStory31");
+
+        return result;
+    }
+    public boolean MultipleBirths_US32(HashMap<String, String[]> Indi) throws ParseException
+
+    {
+        ErrorMessages errorMessages = new ErrorMessages();
+
+        String[] indiValues = new String[100];
+        String[] indiValues1 = new String[100];
+        Vector<String> list = new Vector<>(100);
+        boolean result=false;
+
+        for (String s : Indi.keySet()) {
+            indiValues = Indi.get(s);
+            if (indiValues[5] == "NA")
+                for (String s1 : Indi.keySet()) {
+
+                    indiValues1 = Indi.get(s1);
+                    if (indiValues1[5] == "NA")
+
+                        if (indiValues1[2].equals(indiValues[2]) && indiValues1[6].equals(indiValues[6]) && !(indiValues1[0].equals(indiValues[0])))
+
+                        {
+                            String temp = indiValues[0] + " and " + indiValues1[0];
+                            //System.out.println("User Story32_"+indiValues[0]+" and "+indiValues1[0]+" are a multiple birth");
+                            list.add(temp);
+                            result=true;
+                        }
+
+
+                }
+        }
+
+        errorMessages.ListPrint("all multiple births in a GEDCOM file", list, "UserStory32");
+        return result;
 
     }
 
