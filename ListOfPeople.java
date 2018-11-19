@@ -18,8 +18,9 @@ public class ListOfPeople {
         String[] indiValues = new String[100];
         String[] indiValues1 = new String[100];
         Vector<String> recent_Births = new Vector<String>(100);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date date1 = sdf.parse("15-10-2018");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        Date checkDate = cal.getTime();
         boolean output = false;
 
         for (String s : Individual.keySet()) {
@@ -34,7 +35,7 @@ public class ListOfPeople {
 
                 try {
 
-                    if (date.after(date1)) {
+                    if (date.after(checkDate)) {
                         for (String s1 : Individual.keySet()) {
                             indiValues1 = Individual.get(s1);
                             {
@@ -64,8 +65,9 @@ public class ListOfPeople {
         String[] indiValues = new String[100];
         String[] indiValues1 = new String[100];
         Vector<String> recent_Deaths = new Vector<String>(100);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date date1 = sdf.parse("15-10-2018");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -1);
+        Date checkDate = cal.getTime();
         boolean output = false;
 
         for (String s : Individual.keySet()) {
@@ -80,7 +82,7 @@ public class ListOfPeople {
 
                 try {
 
-                    if (date.after(date1)) {
+                    if (date.after(checkDate)) {
                         for (String s1 : Individual.keySet()) {
                             indiValues1 = Individual.get(s1);
                             {
