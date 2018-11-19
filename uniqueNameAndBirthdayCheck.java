@@ -4,6 +4,7 @@ import java.util.HashMap;
 public class uniqueNameAndBirthdayCheck {
 
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
+    IssueLine issueLine=new IssueLine();
 
     public uniqueNameAndBirthdayCheck() {
     }
@@ -27,7 +28,8 @@ public class uniqueNameAndBirthdayCheck {
                     if ((!(s.equals(s1))) && indiValues[0].equals(indiValues1[0]) && indiValues[2].equals(indiValues1[2])) {
                         temp = s1;
                         String individualID = s + "," + s1;
-                        em.IndividualTableErrorMessages("Name and Birth date is same for two individuals", individualID, "UserStory23");
+                        int errorline=issueLine.GetLineNumber_Individual(s1,indiValues1[0]);
+                        em.IndividualTableErrorMessages("Name and Birth date is same for two individuals", individualID, "UserStory23",errorline);
                         output = true;
                     }
                 }
