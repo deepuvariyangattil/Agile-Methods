@@ -7,6 +7,7 @@ public class DateComparison
 {
 
 	ErrorMessages error = new ErrorMessages();
+	IssueLine issueLine=new IssueLine();
 	// child born before death of mother && father death before 9 months.
 	public boolean DeathOfParentsWithChildBirthScenario_US09(HashMap<String, String[]> individualMap, HashMap<String, String[]> FamilyMap) throws ParseException{
         boolean result = false;
@@ -38,7 +39,8 @@ public class DateComparison
 
                             Date birthdate = obj.StringtoDate(valuec[2]);
                             if (birthdate.after(deathDate)) {
-                                error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "UserStory09");
+                                int errorline=issueLine.GetLineNumber_Individual(childID[l],valuec[2]);
+                                error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "UserStory09",errorline);
                                 result = true;
                             }
 
@@ -66,7 +68,8 @@ public class DateComparison
                         valuec = individualMap.get(childID[l]);
                         Date birthdate = obj.StringtoDate(valuec[2]);
                         if (birthdate.after(deathDate) && DateComparison .getDifferenceOfDates(deathDate,birthdate)!=0) {
-                            error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "US09");
+                            int errorline=issueLine.GetLineNumber_Individual(childID[l],valuec[2]);
+                            error.FamilyAndIndividualTableErrorMessages(" Child born after parents died", childID[l], fam, "US09",errorline);
                             result = true;
                         }
 
@@ -117,10 +120,10 @@ public class DateComparison
 
 						valuei = individualMap.get(childID[l]);
 						Date birthdate = obj.StringtoDate(valuei[2]);
-						if (marriageDate.before(birthdate)) { // check divorse
-																// date too
-							//System.out.println(childID[l] + " Illegal birthdate");
-							error.FamilyAndIndividualTableErrorMessages(" Child born after divorce", childID[l], famvalues, "UserStory08");
+						if (marriageDate.before(birthdate)) {
+						    int errorline=issueLine.GetLineNumber_Individual(childID[l],valuei[2]);
+
+							error.FamilyAndIndividualTableErrorMessages(" Child born after divorce", childID[l], famvalues, "UserStory08",errorline);
 							result = true;
 						}
 					}
