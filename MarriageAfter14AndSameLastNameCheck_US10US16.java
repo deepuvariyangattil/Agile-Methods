@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MarriageAfter14AndSameLastNameCheck_US10US16 {
     private FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
+    IssueLine issueLine=new IssueLine();
 
     public MarriageAfter14AndSameLastNameCheck_US10US16() {
 
@@ -44,22 +45,19 @@ public class MarriageAfter14AndSameLastNameCheck_US10US16 {
                 {
                     if(iValues[1].trim().equalsIgnoreCase("M"))
                     {
-                        //System.out.println("\nError in GEDCOM File: Husband with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                          //     s );
-                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband married before 14 years old",t,s,"UserStory10");
+                        int errorline=issueLine.GetLineNumber_Individual(t,iValues[2]);
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband married before 14 years old",t,s,"UserStory10",errorline);
 
                     }
                     else if(iValues[1].trim().equalsIgnoreCase("F"))
                     {
-                        //System.out.println("\nError in GEDCOM File: Wife with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                          //      s);
-                        errorMessages.FamilyAndIndividualTableErrorMessages("Wife married before 14 years old",t,s,"UserStory10");
+                        int errorline=issueLine.GetLineNumber_Individual(t,iValues[2]);
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Wife married before 14 years old",t,s,"UserStory10",errorline);
                     }
                     else
                     {
-                        //System.out.println("\nError in GEDCOM File: Husband/Wife(Gender not mentioned) with individual ID "+t+" married at the age "+differenceInYears+" in the family with family ID " +
-                          //      s);
-                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband/Wife(Gender not mentioned) married before 14 years old",t,s,"UserStory10");
+                        int erroline=issueLine.GetLineNumber_Family(s,s);
+                        errorMessages.FamilyAndIndividualTableErrorMessages("Husband/Wife(Gender not mentioned) married before 14 years old",t,s,"UserStory10",erroline);
                     }
                    output=true;
                 }
@@ -97,9 +95,8 @@ ErrorMessages errorMessages=new ErrorMessages();
                         childLastName=LastNameExtractor(iValues[0]);
                         if(!(childLastName.trim().equalsIgnoreCase(fatherLastName)))
                         {
-                            //System.out.println("\nError in GEDCOM File: Child with Individual ID "+t+" Has a different last name compared to Father with individual ID "+fValues[2]
-                            //+" in the family with family ID "+s);
-                            errorMessages.FamilyTableErrorMessages("Child and Father has different last names ",s,"UserStory16");
+                           int errorline=issueLine.GetLineNumber_Individual(t,iValues[0]);
+                            errorMessages.FamilyTableErrorMessages("Child and Father has different last names ",s,"UserStory16",errorline);
                             result=true;
                         }
 
