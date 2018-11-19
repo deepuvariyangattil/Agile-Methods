@@ -81,6 +81,7 @@ public class ListOfPeopleTest {
         assertTrue(result);
 
 
+
     }
 
 
@@ -93,5 +94,53 @@ public class ListOfPeopleTest {
         ListOfPeople us=new ListOfPeople();
         boolean result=us.UpAnniv_39(family);
         assertTrue(result);
+    }
+
+    @Test
+    public void testUpcomingBday_US38() {
+        HashMap<String,String[]>individualMap=new HashMap<>();
+        String[] individual1,individual2;
+        individual1=new String[]{"George/Joe/", "M", "10-12-1986", "33", "True", "NA", "F2", "F1"};
+        individual2=new String[]{"Sarah/Thomas/","F","02-05-1986","33","True","NA","F2","F1"};
+        individualMap.put("I1",individual1);
+        individualMap.put("I2",individual2);
+        ListOfPeople listOfPeople=new ListOfPeople();
+        Assert.assertTrue(listOfPeople.UpcomingBday_US38(individualMap));
+        individualMap.clear();
+        individual1=new String[]{"Peter/Joe/", "M", "30-12-1986", "33", "True", "NA", "F2", "F1"};
+        individual2=new String[]{"Sarah/Thomas/","F","02-05-1986","33","True","NA","F2","F1"};
+        individualMap.put("I1",individual1);
+        individualMap.put("I2",individual2);
+        Assert.assertFalse(listOfPeople.UpcomingBday_US38(individualMap));
+
+    }
+
+    @Test
+    public void stillSingle_US31() throws ParseException {
+        HashMap<String,String[]>individualMap=new HashMap<>();
+        String[] individual1,individual2;
+        individual1=new String[]{"George/Joe/", "M", "10-12-1986", "33", "True", "NA", "F2",""};
+        individual2=new String[]{"Sarah/Thomas/","F","02-05-2003","29","True","NA","F2",""};
+        individualMap.put("I1",individual1);
+        individualMap.put("I2",individual2);
+        Assert.assertTrue(new ListOfPeople().StillSingle_US31(individualMap));
+
+    }
+
+    @Test
+    public void multipleBirths_US32() throws ParseException {
+        HashMap<String,String[]>individualMap=new HashMap<>();
+        String[] individual1,individual2;
+        individual1=new String[]{"George/Joe/", "M", "10-12-1986", "33", "True", "NA", "F2",""};
+        individual2=new String[]{"Sarah/Thomas/","F","10-12-1986","29","True","NA","F2",""};
+        individualMap.put("I1",individual1);
+        individualMap.put("I2",individual2);
+        Assert.assertTrue(new ListOfPeople().MultipleBirths_US32(individualMap));
+        individualMap.clear();
+        individual1=new String[]{"George/Joe/", "M", "10-12-1996", "33", "True", "NA", "F2",""};
+        individual2=new String[]{"Sarah/Thomas/","F","10-12-1986","29","True","NA","F2",""};
+        individualMap.put("I1",individual1);
+        individualMap.put("I2",individual2);
+        Assert.assertFalse(new ListOfPeople().MultipleBirths_US32(individualMap));
     }
 }
