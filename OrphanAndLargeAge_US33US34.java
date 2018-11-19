@@ -3,6 +3,7 @@ import java.util.HashMap;
 public class OrphanAndLargeAge_US33US34 {
 	FormatGEDCOM formatGEDCOM = new FormatGEDCOM();
 	ErrorMessages errorMessages=new ErrorMessages();
+	IssueLine issueLine=new IssueLine();
 	
 	public  boolean orphans(HashMap<String,String[]> Indi,HashMap<String,String[]> Fam)
 	{
@@ -38,7 +39,8 @@ public class OrphanAndLargeAge_US33US34 {
 			{
 				
 				//System.out.println("Individual(s) "+famValues[6]+" is an orphan");
-				errorMessages.IndividualTableErrorMessages("Individual is an orphan",famValues[6].trim(),"UserStory33");
+				int erroline=issueLine.GetLineNumber_Family(s,famValues[6]);
+				errorMessages.IndividualTableErrorMessages("Individual is an orphan",famValues[6].trim(),"UserStory33",erroline);
 				t=true;
 			}
 			c=0;
@@ -67,7 +69,8 @@ public boolean largeAgeD(HashMap<String,String[]> Indi)
 	{
 		String message=indiValues[0]+" is more than twice as old as "+indiValues_Duplicate[0];
 		String individualID=s+","+s1;
-		errorMessages.IndividualTableErrorMessages(message,individualID,"UserStory34");
+		int errorline=issueLine.GetLineNumber_Individual(s,indiValues[0]);
+		errorMessages.IndividualTableErrorMessages(message,individualID,"UserStory34",errorline);
 		//System.out.println(indiValues[0]+" is more than twice as old as "+indiValues_Duplicate[0]);
 		t=true;
 	}
