@@ -19,7 +19,7 @@ public class Project {
 
 
         //List Printing
-        System.out.println("\n\033[0;1m\033[0;4mDIFFERENT LISTS FROM GEDCOM FILE\033[0;0m\n");
+        System.out.println("\n\033[0;1m\033[0;4mDIFFERENT LISTS EXTRACTED FROM GEDCOM FILE\033[0;0m\n");
         listOfPeople.UpcomingBday_US38(formatGEDCOM.getIndividualMap());
         listOfPeople.recentBirths_US35(formatGEDCOM.getIndividualMap());
         listOfPeople.recentDeaths_US36(formatGEDCOM.getIndividualMap());
