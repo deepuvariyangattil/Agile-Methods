@@ -143,4 +143,60 @@ public class ListOfPeopleTest {
         individualMap.put("I2",individual2);
         Assert.assertFalse(new ListOfPeople().MultipleBirths_US32(individualMap));
     }
+
+    @Test
+    public void recentBirths_US35() {
+        ListOfPeople obj = new ListOfPeople();
+
+        HashMap<String, String[]> individual = new HashMap<>(100);
+
+        String[] indiValue1 = {"Christian/Philip/", "M", "15-11-2018", "3", "True", "NA", "F8"};
+        individual.put("I1", indiValue1);
+
+        try {
+            //Invalid scenario
+            Assert.assertTrue(obj.recentBirths_US35(individual));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        individual.clear();
+        indiValue1 = new String[]{"Fabi/Thomas/", "F", "20-10-2018", "21", "True", "NA", "F9"};
+        individual.put("I2", indiValue1);
+
+        try {
+            //Valid Scenario
+            Assert.assertFalse(obj.recentBirths_US35(individual));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void recentDeaths_US36() {
+        ListOfPeople obj = new ListOfPeople();
+
+        HashMap<String, String[]> individual = new HashMap<>(100);
+
+        String[] indiValue1 = {"Christian/Philip/", "M", "21-03-1972", "3", "False", "30-10-2018", "F8"};
+        individual.put("I1", indiValue1);
+
+        try {
+            //Invalid scenario
+            Assert.assertTrue(obj.recentDeaths_US36(individual));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        individual.clear();
+        indiValue1 = new String[]{"John/Thomas/", "F", "08-11-1991", "21", "False", "20-10-2018", "F9"};
+        individual.put("I2", indiValue1);
+
+        try {
+            //Valid Scenario
+            Assert.assertFalse(obj.recentDeaths_US36(individual));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
