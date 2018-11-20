@@ -10,7 +10,7 @@ public class uniqueChildInFamily {
 
     public boolean uniqueChild_US25(HashMap<String, String[]> Family, HashMap<String, String[]> Individual) {
 
-        formatGEDCOM.GedcomTable();
+
         String[] famValues, childarray = new String[100];
         IssueLine issueLine=new IssueLine();
         String[] indiValues, indiValues1 = new String[100];
@@ -38,8 +38,12 @@ public class uniqueChildInFamily {
                     }
                 }
 
-                for (int i = 1; i < comparisonList.size(); i = i + 2) {
+
+                for (int i = 1; i < comparisonList.size(); i = i + 3) {
+
+
                     for (int j = i + 3; j < comparisonList.size(); j += 3) {
+
                         
                         if ((comparisonList.elementAt(i).equalsIgnoreCase(comparisonList.elementAt(j))) && (comparisonList.elementAt(i + 1).equalsIgnoreCase(comparisonList.elementAt(j + 1)))) {
 
